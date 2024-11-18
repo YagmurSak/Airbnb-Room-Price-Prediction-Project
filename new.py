@@ -1,6 +1,3 @@
-from aiohttp.web_routedef import options
-from docutils.nodes import option
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
