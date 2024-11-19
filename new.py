@@ -117,7 +117,8 @@ avg_price = df["price"].mean()
 avg_price1 = int(avg_price)
 formatted_price = f"${avg_price1:,}"  # Virgüllerle biçimlendirilmiş ve $ eklenmiş hali
 number_of_private = len(df[df["room_type"] == "Private room"])
-number_of_Shared = len(df[df["room_type"] == "Entire home/apt"])
+number_of_entire = len(df[df["room_type"] == "Entire home/apt"])
+number_of_Shared = len(df[df["room_type"] == "Shared room"])
 
 price_mean_neigborhood = df.groupby("neighbourhood")["price"].mean().reset_index()
 
@@ -126,6 +127,7 @@ col1, col2, col3, col4 = data_tab.columns(4)
 col1.metric(":red[Average Price]", formatted_price)
 col2.metric(":red[Number of Private Rooms]", number_of_private)
 col3.metric(":red[Number of Shared Rooms]", number_of_Shared)
+col4.metric("red[Number of Entire home/apt]", number_of_entire) 
 
 
 ## GRAFİK
