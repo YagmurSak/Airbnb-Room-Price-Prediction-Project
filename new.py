@@ -238,8 +238,8 @@ if recommendation_tab.button("Calculate estimated price"):
     }
 
     # Bölge Grubu Dummy Encoding (tek bir 1, diğerleri 0 olacak şekilde)
-    for group in ["Brooklyn", "Manhattan", "Queens", "Staten Island"]:
-        input_data[f"neighbourhood_group_{group}"] = 1 if bolge_grubu == group else 0
+    #for group in ["Brooklyn", "Manhattan", "Queens", "Staten Island"]:
+    #    input_data[f"neighbourhood_group_{group}"] = 1 if bolge_grubu == group else 0
 
     # Kullanıcı girdisini DataFrame'e dönüştür
     input_df = pd.DataFrame([input_data])
