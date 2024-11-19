@@ -256,8 +256,8 @@ if recommendation_tab.button("Calculate estimated price"):
     input_df = input_df[feature_names]
 
     # Dummy Encoding Kontrolü
-    recommendation_tab.write("Dummy Encoding Sonuçları:")
-    recommendation_tab.write(input_df)
+    #recommendation_tab.write("Dummy Encoding Sonuçları:")
+    #recommendation_tab.write(input_df)
 
     # Tahmin işlemi
     tahmini_fiyat = model.predict(input_df)[0]
