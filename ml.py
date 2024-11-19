@@ -52,7 +52,6 @@ def train_and_save_model():
     def data_prep(dataframe):
         dataframe.drop(["name", "host_id", "host_name", "last_review", "id"], axis=1, inplace=True, errors='ignore')
         dataframe.drop(['latitude', 'longitude'], axis=1, inplace=True, errors='ignore')
-        dataframe["price"] = df["price"] + 50
         return dataframe
 
     df = data_prep(df)
