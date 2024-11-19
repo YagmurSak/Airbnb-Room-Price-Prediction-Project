@@ -127,7 +127,7 @@ col1, col2, col3, col4 = data_tab.columns(4)
 col1.metric(":red[Average Price]", formatted_price)
 col2.metric(":red[Number of Private Rooms]", number_of_private)
 col3.metric(":red[Number of Shared Rooms]", number_of_Shared)
-col4.metric("red[Number of Entire home/apt]", number_of_entire) 
+col4.metric(":red[Number of Entire home/apt]", number_of_entire) 
 
 
 ## GRAFİK
