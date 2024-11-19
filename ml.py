@@ -196,7 +196,7 @@ def train_and_save_model():
     print("yeni_dosya1.csv başarıyla oluşturuldu!")
 
     # Verinin ayrıştırılması
-    y = df["price"] + 50
+    y = df["price"] + 100
 
     # Hedef değişken ve kategorik bir kolon çıkarılıyor
     X = df.drop(["neighbourhood", "price"], axis=1)
