@@ -52,6 +52,7 @@ def train_and_save_model():
     def data_prep(dataframe):
         dataframe.drop(["name", "host_id", "host_name", "last_review", "id"], axis=1, inplace=True, errors='ignore')
         dataframe.drop(['latitude', 'longitude'], axis=1, inplace=True, errors='ignore')
+        dataframe["price"] = df["price"] + 50
         return dataframe
 
     df = data_prep(df)
@@ -196,7 +197,7 @@ def train_and_save_model():
     print("yeni_dosya1.csv başarıyla oluşturuldu!")
 
     # Verinin ayrıştırılması
-    y = df["price"] + 100
+    y = df["price"]
 
     # Hedef değişken ve kategorik bir kolon çıkarılıyor
     X = df.drop(["neighbourhood", "price"], axis=1)
