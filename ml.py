@@ -210,7 +210,7 @@ def train_and_save_model():
     model.fit(X_train, y_train, cat_features=[])
 
     # Tahminler
-    y_pred = model.predict(X_test) +120
+    y_pred = model.predict(X_test)
 
     # Performans metrikleri
     mse = mean_squared_error(y_test, y_pred)
