@@ -213,7 +213,7 @@ bolge_grubu = recommendation_tab.selectbox(
 # Oda Tipi Seçimi
 oda_tipi = recommendation_tab.selectbox(
     "Choose your room type:",
-    options=["Entire home/apt", "Private room", "Shared room"],
+    options=df["neighbourhood_group"].unique(),
     help="Mülkün oda tipini seçin."
 )
 
