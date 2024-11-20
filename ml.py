@@ -172,18 +172,18 @@ def train_and_save_model():
 
     df = create_new_features(df)
 
-    def scale_numeric_columns(dataframe, numeric_columns, exclude_columns=None):
-        if exclude_columns:
-            numeric_columns = [col for col in numeric_columns if col not in exclude_columns]
+    #def scale_numeric_columns(dataframe, numeric_columns, exclude_columns=None):
+    #    if exclude_columns:
+    #        numeric_columns = [col for col in numeric_columns if col not in exclude_columns]
 
-        rs = RobustScaler()
-        dataframe[numeric_columns] = rs.fit_transform(dataframe[numeric_columns])
-        return dataframe[numeric_columns].head()
-        # TODO: return dataframe[numeric_columns].head()
+     #   rs = RobustScaler()
+     #   dataframe[numeric_columns] = rs.fit_transform(dataframe[numeric_columns])
+      #  return dataframe[numeric_columns].head()
+       # # TODO: return dataframe[numeric_columns].head()
 
-    num_cols = [col for col in df.select_dtypes(include="number").columns]
-    scaled_data = scale_numeric_columns(df, num_cols, exclude_columns=["price"])
-    print(scaled_data)
+    #num_cols = [col for col in df.select_dtypes(include="number").columns]
+    #scaled_data = scale_numeric_columns(df, num_cols, exclude_columns=["price"])
+    #print(scaled_data)
 
     def one_hot_encoder(dataframe, categorical_cols, drop_first=False):
         dataframe = pd.get_dummies(dataframe, columns=categorical_cols, drop_first=drop_first)
