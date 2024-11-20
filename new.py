@@ -312,35 +312,3 @@ if recommendation_tab.button("Calculate estimated price"):
 
     # Sonuç Gösterimi
     recommendation_tab.success(f"Tahmini Fiyat: {tahmini_fiyat:.2f} USD")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
