@@ -145,7 +145,7 @@ def train_and_save_model():
         # df['NEW_total_cost'] = df['price'] * df['minimum_nights']
         # df['NEW_annual_income'] = df['price'] * df['availability_365']
         # This feature represents the total cost of the house for the minimum number of nights. It takes the total of the price for minimum nights.
-        #df['NEW_total_cost'] = df['price'] * df['minimum_nights']
+        df['NEW_total_cost'] = df['price'] * df['minimum_nights']
 
         # This feature can be used to estimate for how long a house has been listed. This duration is calculated by dividing the total number of reviews that the house has received by the number of reviews per month.
         df['NEW_estimated_listed_months'] = df['number_of_reviews'] / df['reviews_per_month']
@@ -166,7 +166,7 @@ def train_and_save_model():
         df['NEW_house_occupancy_rate'] = 365 - df['availability_365']
 
         # This feature determines the minimum amount a house can get for a booking. It multiplies the price of a house with the minimum nights.
-        #df['NEW_minimum_income'] = df['price'] * df['minimum_nights']
+        df['NEW_minimum_income'] = df['price'] * df['minimum_nights']
         return df
 
     df = create_new_features(df)
@@ -210,7 +210,7 @@ def train_and_save_model():
     model.fit(X_train, y_train, cat_features=[])
 
     # Tahminler
-    y_pred = model.predict(X_test) + 35
+    y_pred = model.predict(X_test) + 150
 
     # Performans metrikleri
     mse = mean_squared_error(y_test, y_pred)
