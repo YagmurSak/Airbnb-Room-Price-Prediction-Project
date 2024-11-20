@@ -234,10 +234,13 @@ mahalle = recommendation_tab.selectbox(
     help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
 )
 
-puan_sayısı = recommendation_tab.selectbox(
-    "Choose your neighbourhood:",
-    options=df["reviews_per_month"].unique(),
-    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
+puan_sayısı = recommendation_tab.number_input(
+    "Enter your Airbnb reviews number:",
+    min_value=1,
+    max_value=365,
+    value=1,
+    step=1,
+    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin."
 )
 
 
