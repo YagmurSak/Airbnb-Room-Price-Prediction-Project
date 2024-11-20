@@ -246,7 +246,7 @@ puan_sayısı = recommendation_tab.number_input(
     max_value=365,
     value=1,
     step=1,
-    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin.")
+    help="Airbnb uygulamasında odanızın puan sayısını seçin.")
 
 
 oda_sayısı = recommendation_tab.number_input(
@@ -255,7 +255,7 @@ oda_sayısı = recommendation_tab.number_input(
     max_value=365,
     value=1,
     step=1,
-    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin."
+    help="Kiraladığınız toplam oda sayısını seçin."
 )
 
 musait = recommendation_tab.number_input(
@@ -264,7 +264,7 @@ musait = recommendation_tab.number_input(
     max_value=365,
     value=1,
     step=1,
-    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin."
+    help="Odanızın yılda toplam kaç gün müsait olduğunu seçin."
 )
 
 
@@ -284,8 +284,8 @@ if recommendation_tab.button("Calculate estimated price"):
         }
 
     # Bölge Grubu Dummy Encoding (tek bir 1, diğerleri 0 olacak şekilde)
-    #for group in ["Brooklyn", "Manhattan", "Queens", "Staten Island"]:
-    #    input_data[f"neighbourhood_group_{group}"] = 1 if bolge_grubu == group else 0
+    for group in ["Brooklyn", "Manhattan", "Queens", "Staten Island"]:
+        input_data[f"neighbourhood_group_{group}"] = 1 if bolge_grubu == group else 0
 
     # Kullanıcı girdisini DataFrame'e dönüştür
     input_df = pd.DataFrame([input_data])
