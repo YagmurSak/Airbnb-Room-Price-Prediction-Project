@@ -137,7 +137,7 @@ col4.metric(":red[Number of Entire home/apt]", number_of_entire)
 data_tab.title("New York City Airbnb Houses Map")
 #st.markdown("Bu harita, New York City'deki Airbnb girişlerinin konumlarını göstermektedir.")
 
- Harita için filtre (isteğe bağlı)
+#Harita için filtre (isteğe bağlı)
 neighborhood_group = data_tab.selectbox(
     "Brooklyn",
     options=df["neighbourhood_group"].unique(),
