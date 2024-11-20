@@ -227,11 +227,10 @@ oda_tipi = recommendation_tab.selectbox(
 #    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin.")
 
 
-mahalle = recommendation_tab.selectbox(
-    "Choose your neighbourhood:",
-    options=df["neighbourhood"].unique(),
-    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
-)
+#mahalle = recommendation_tab.selectbox(
+#   "Choose your neighbourhood:",
+#    options=df["neighbourhood"].unique(),
+#    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn).")
 
 #aylık_puan_sayısı = recommendation_tab.number_input(
 #    "Enter your number of reviews per month:",
@@ -247,8 +246,7 @@ puan_sayısı = recommendation_tab.number_input(
     max_value=365,
     value=1,
     step=1,
-    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin."
-)
+    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin.")
 
 
 oda_sayısı = recommendation_tab.number_input(
@@ -277,7 +275,7 @@ if recommendation_tab.button("Calculate estimated price"):
         #"minimum_nights": min_gece,
         "room_type_Private room": 1 if oda_tipi == "Private room" else 0,
         "room_type_Shared room": 1 if oda_tipi == "Shared room" else 0,
-        "neighbourhood":mahalle,
+        #"neighbourhood":mahalle,
         "number_of_reviews":puan_sayısı,
         "calculated_host_listings_count":oda_sayısı,
         "availability_365":musait,
