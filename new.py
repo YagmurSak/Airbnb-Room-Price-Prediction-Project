@@ -165,16 +165,16 @@ data_tab.plotly_chart(fig1)
 ## 4.GRAFİK
 
 
-#fig2 = px.bar(df,
-#             x="neighbourhood_group",
-#             y="minimum_nights",
-#             title="Minimum nights spent by Neighborhood",
-#             labels={"neighborhood": "Neighborhood", "price": "Average Price"},
-#             color="price",
-#             template="plotly"
-#            )
+fig2 = px.bar(df,
+             x="neighbourhood_group",
+             y="minimum_nights",
+             title="Minimum nights spent by Neighborhood",
+             labels={"neighborhood": "Neighborhood", "price": "Average Price"},
+             color="price",
+             template="plotly"
+            )
 
-#data_tab.plotly_chart(fig2)
+data_tab.plotly_chart(fig2)
 
 #fig2 = px.bar(df,
 #             x="neighbourhood_group",
