@@ -233,14 +233,24 @@ mahalle = recommendation_tab.selectbox(
     help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
 )
 
-puan_sayısı = recommendation_tab.number_input(
-    "Enter your Airbnb reviews number:",
+aylık_puan_sayısı = recommendation_tab.number_input(
+    "Enter your number of reviews per month:",
     min_value=1,
     max_value=365,
     value=1,
     step=1,
     help="Misafirlerin en az kaç gece kalması gerektiğini belirtin."
 )
+
+puan_sayısı = recommendation_tab.number_input(
+    "Enter your number of reviews:",
+    min_value=1,
+    max_value=365,
+    value=1,
+    step=1,
+    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin."
+)
+
 
 oda_sayısı = recommendation_tab.number_input(
     "Enter your room numbers:",
@@ -269,9 +279,10 @@ if recommendation_tab.button("Calculate estimated price"):
         "room_type_Private room": 1 if oda_tipi == "Private room" else 0,
         "room_type_Shared room": 1 if oda_tipi == "Shared room" else 0,
         "neighbourhood":mahalle,
-        "reviews_per_month":puan_sayısı,
+        "number_of_reviews":puan_sayısı,
         "calculated_host_listings_count":oda_sayısı,
         "availability_365":musait
+        "reviews_per_month":aylık_puan_sayısı
         }
 
     # Bölge Grubu Dummy Encoding (tek bir 1, diğerleri 0 olacak şekilde)
