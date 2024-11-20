@@ -217,7 +217,7 @@ mahalle = recommendation_tab.selectbox(
 # Oda Tipi Seçimi
 oda_tipi = recommendation_tab.selectbox(
     "Choose your room type:",
-    options=df["room_type"].unique(),
+    options=df["Private room, Entire home/apt, Shared room"].unique(),
     help="Mülkün oda tipini seçin."
 )
 
