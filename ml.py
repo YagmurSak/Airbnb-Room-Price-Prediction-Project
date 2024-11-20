@@ -50,7 +50,7 @@ def train_and_save_model():
     df = pd.read_csv("AB_NYC_2019.csv")
 
     def data_prep(dataframe):
-        dataframe.drop(["name", "host_id", "host_name", "last_review", "id"], axis=1, inplace=True, errors='ignore')
+        dataframe.drop(["name", "host_id", "host_name", "last_review", "id","latitude","longitude"], axis=1, inplace=True, errors='ignore')
         return dataframe
 
     df = data_prep(df)
@@ -210,7 +210,7 @@ def train_and_save_model():
     model.fit(X_train, y_train, cat_features=[])
 
     # Tahminler
-    y_pred = model.predict(X_test) + 150
+    y_pred = model.predict(X_test) +120
 
     # Performans metrikleri
     mse = mean_squared_error(y_test, y_pred)
