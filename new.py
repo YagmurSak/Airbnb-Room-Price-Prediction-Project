@@ -281,7 +281,7 @@ if recommendation_tab.button("Calculate estimated price"):
         "neighbourhood":mahalle,
         "number_of_reviews":puan_sayısı,
         "calculated_host_listings_count":oda_sayısı,
-        "availability_365":musait
+        "availability_365":musait,
         "reviews_per_month":aylık_puan_sayısı
         }
 
