@@ -202,12 +202,17 @@ recommendation_tab.subheader("Get estimated price by area group, room type and m
 # Kullanıcıdan Bilgi Alma
 recommendation_tab.write("### Enter Your Details")
 
+mahalle = recommendation_tab.selectbox(
+   "Choose your neighbourhood:",
+    options=df["neighbourhood"].unique(),
+    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn).")
+
+
 # Bölge Grubu Seçimi
-bolge_grubu = recommendation_tab.selectbox(
-    "Choose your neighbourhood group:",
-    options=df["neighbourhood_group"].unique(),
-    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
-)
+#bolge_grubu = recommendation_tab.selectbox(
+#    "Choose your neighbourhood group:",
+#    options=df["neighbourhood_group"].unique(),
+#    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn).")
 
 # Oda Tipi Seçimi
 oda_tipi = recommendation_tab.selectbox(
@@ -225,11 +230,6 @@ min_gece = recommendation_tab.number_input(
     step=1,
     help="Misafirlerin en az kaç gece kalması gerektiğini belirtin.")
 
-
-#mahalle = recommendation_tab.selectbox(
-#   "Choose your neighbourhood:",
-#    options=df["neighbourhood"].unique(),
-#    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn).")
 
 #aylık_puan_sayısı = recommendation_tab.number_input(
 #    "Enter your number of reviews per month:",
