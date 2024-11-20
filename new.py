@@ -206,7 +206,7 @@ recommendation_tab.write("### Enter Your Details")
 
 # Bölge Grubu Seçimi
 bolge_grubu = recommendation_tab.selectbox(
-    "Choose your neighborhood group:",
+    "Choose your neighbourhood group:",
     options=["Brooklyn", "Manhattan", "Queens", "Staten Island"],
     help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
 )
@@ -227,6 +227,19 @@ min_gece = recommendation_tab.number_input(
     step=1,
     help="Misafirlerin en az kaç gece kalması gerektiğini belirtin."
 )
+
+mahalle = recommendation_tab.selectbox(
+    "Choose your neighbourhood:",
+    options=df["neighbourhood"].unique(),
+    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
+)
+
+puan_sayısı = recommendation_tab.selectbox(
+    "Choose your neighbourhood:",
+    options=df["reviews_per_month"].unique(),
+    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
+)
+
 
 # Tahmin Butonu
 if recommendation_tab.button("Calculate estimated price"):
