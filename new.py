@@ -206,14 +206,14 @@ recommendation_tab.write("### Enter Your Details")
 # Bölge Grubu Seçimi
 bolge_grubu = recommendation_tab.selectbox(
     "Choose your neighbourhood group:",
-    options=["Brooklyn", "Manhattan", "Queens", "Staten Island"],
+    options=df["neighbourhood_group"],
     help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn)."
 )
 
 # Oda Tipi Seçimi
 oda_tipi = recommendation_tab.selectbox(
     "Choose your room type:",
-    options=df["neighbourhood_group"].unique(),
+    options=df["room_type"].unique(),
     help="Mülkün oda tipini seçin."
 )
 
