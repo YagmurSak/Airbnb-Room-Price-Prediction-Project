@@ -98,8 +98,6 @@ st.logo("logo.jpg",
 #    size="large")
 
 
-
-
 ## DATA TAB
 
 @st.cache_data
@@ -111,7 +109,6 @@ def get_data():
 df = get_data()
 df.head()
 #data_tab.dataframe(df)
-
 
 avg_price = df["price"].mean()
 avg_price1 = int(avg_price)
@@ -178,6 +175,18 @@ data_tab.plotly_chart(fig1)
 #            )
 
 #data_tab.plotly_chart(fig2)
+
+#fig2 = px.bar(df,
+#             x="neighbourhood_group",
+#             y="price",
+#             title="Minimum nights spent by Neighborhood",
+#             labels={"neighborhood": "Neighborhood", "price": "Average Price"},
+#             color="price",
+#             template="plotly"
+#            )
+
+#data_tab.plotly_chart(fig2)
+
 
 
 
