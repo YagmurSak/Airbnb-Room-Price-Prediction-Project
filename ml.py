@@ -157,7 +157,7 @@ def train_and_save_model():
         df['NEW_daily_average_reviews'] = df['reviews_per_month'] / 30
 
         # This feature estimates how much a host can earn in a year. It multiplies the price of a house with how many days it is available in a year.
-        #df['NEW_annual_income'] = df['price'] * df['availability_365']
+        df['NEW_annual_income'] = df['price'] * df['availability_365']
 
         # This feature estimates the average duration a customer stays. It divides the total number of reviews by the reviews per month.
         df['NEW_average_stay_duration'] = df['number_of_reviews'] / df['reviews_per_month']
