@@ -1,50 +1,19 @@
 import numpy as np
 import pandas as pd
-
 import matplotlib
-
 matplotlib.use("TkAgg")
 from sklearn.preprocessing import RobustScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 
 from sklearn.impute import KNNImputer
-
 import joblib
 from warnings import filterwarnings
-
-import pandas as pd
-import numpy as np
-
-from sklearn.model_selection import train_test_split
-
 from sklearn.ensemble import GradientBoostingRegressor
-
-from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-from sklearn.preprocessing import RobustScaler
-
-import numpy as np
-import pandas as pd
-
-import matplotlib
-
-matplotlib.use("TkAgg")
-from sklearn.preprocessing import RobustScaler
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
-
-from sklearn.impute import KNNImputer
-
-import joblib
-from warnings import filterwarnings
 from catboost import CatBoostRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-import joblib
 
 filterwarnings('ignore')
-
 
 def train_and_save_model():
     df = pd.read_csv("AB_NYC_2019.csv")
@@ -135,54 +104,24 @@ def train_and_save_model():
     df = rare_encoder(df, 0.01)
 
     def create_new_features(df):
-        # df['NEW_total_review_ratio'] = df['number_of_reviews'] / (df['availability_365'] + 1)
-        # df['NEW_average_income_per_review'] = (df['price'] * df['availability_365']) / (df['number_of_reviews'] + 1)
-        # df['NEW_average_nights_booked'] = df['availability_365'] / (df['number_of_reviews'] + 1)
-        # df['NEW_price_per_review'] = df['price'] / (df['number_of_reviews'] + 1)
-        # df['NEW_days_since_last_review'] = (365 - df['availability_365']) / (df['reviews_per_month'] + 1)
-        # df['NEW_monthly_income_estimate'] = (df['price'] * df['availability_365']) / 12
-        # df['NEW_review_density'] = df['number_of_reviews'] / 365
-        # df['NEW_total_cost'] = df['price'] * df['minimum_nights']
-        # df['NEW_annual_income'] = df['price'] * df['availability_365']
-        # This feature represents the total cost of the house for the minimum number of nights. It takes the total of the price for minimum nights.
-        # df['NEW_total_cost'] = df['price'] * df['minimum_nights']
-
-        # This feature can be used to estimate for how long a house has been listed. This duration is calculated by dividing the total number of reviews that the house has received by the number of reviews per month.
-        df['NEW_estimated_listed_months'] = df['number_of_reviews'] / df['reviews_per_month']
-
-        # This feature gives the ratio of how long a house is available throughout the year.
+        df['NEW_total_review_ratio'] = df['number_of_reviews'] / (df['availability_365'] + 1)
+        df['NEW_average_income_per_review'] = (df['price'] * df['availability_365']) / (df['number_of_reviews'] + 1)
+        df['NEW_average_nights_booked'] = df['availability_365'] / (df['number_of_reviews'] + 1)
+        df['NEW_price_per_review'] = df['price'] / (df['number_of_reviews'] + 1)
+        df['NEW_days_since_last_review'] = (365 - df['availability_365']) / (df['reviews_per_month'] + 1)
+        df['NEW_monthly_income_estimate'] = (df['price'] * df['availability_365']) / 12
+        df['NEW_review_density'] = df['number_of_reviews'] / 365
+        df['NEW_total_cost'] = df['price'] * df['minimum_nights']
+        df['NEW_annual_income'] = df['price'] * df['availability_365']
+        df['NEW_total_cost'] = df['price'] * df['minimum_nights']
         df['NEW_availability_ratio'] = df['availability_365'] / 365
-
-        # This feature gives the daily average reviews a host receives. It divides the reviews per month by the number of days in a month.
         df['NEW_daily_average_reviews'] = df['reviews_per_month'] / 30
-
-        # This feature estimates how much a host can earn in a year. It multiplies the price of a house with how many days it is available in a year.
-        # df['NEW_annual_income'] = df['price'] * df['availability_365']
-
-        # This feature estimates the average duration a customer stays. It divides the total number of reviews by the reviews per month.
         df['NEW_average_stay_duration'] = df['number_of_reviews'] / df['reviews_per_month']
-
-        # This feature gives the occupancy rate of a house throughout the year. It subtracts from 365 the number of days a house is available in a year.
         df['NEW_house_occupancy_rate'] = 365 - df['availability_365']
-
-        # This feature determines the minimum amount a house can get for a booking. It multiplies the price of a house with the minimum nights.
-        # df['NEW_minimum_income'] = df['price'] * df['minimum_nights']
         return df
 
     df = create_new_features(df)
 
-    #def scale_numeric_columns(dataframe, numeric_columns, exclude_columns=None):
-    #    if exclude_columns:
-    #        numeric_columns = [col for col in numeric_columns if col not in exclude_columns]
-
-     #   rs = RobustScaler()
-     #   dataframe[numeric_columns] = rs.fit_transform(dataframe[numeric_columns])
-      #  return dataframe[numeric_columns].head()
-       # # TODO: return dataframe[numeric_columns].head()
-
-    #num_cols = [col for col in df.select_dtypes(include="number").columns]
-    #scaled_data = scale_numeric_columns(df, num_cols, exclude_columns=["price"])
-    #print(scaled_data)
 
     def one_hot_encoder(dataframe, categorical_cols, drop_first=False):
         dataframe = pd.get_dummies(dataframe, columns=categorical_cols, drop_first=drop_first)
