@@ -4,22 +4,6 @@ import plotly
 import plotly.express as px
 import joblib
 
-# st.divider() ayırma çizgisi
-#
-#st.subheader(":blue[Find the best price for your home!]")
-
-# st.text(" bu şekilde de bir ekleme yapılabilir ama çirkin ")
-
-# st.markdown("# ile yazı boyutunu değiştirebilirsin. ")
-
-# st.markdown("_italik yazmak için_")
-
-# st.markdown("* madde madde yazmak için")
-
-# st.markdown("### Yazı")
-
-# st.write("içine ne koyarsan ou ekliyor")
-
 st.set_page_config(layout="wide", page_title="Panda" , page_icon="🏠")
 
 st.title(":rainbow[Airbnb Room Price Prediction]💒")
@@ -46,10 +30,6 @@ and streamlining the pricing process. Our goal is to expand our solutions and su
 
 st.sidebar.title(":blue[Contact]")
 st.sidebar.write("panda@gmail.com")
-
-
-
-
 
 home_tab, data_tab, recommendation_tab = st.tabs(["Home", "Data", "Recommendation"])
 
@@ -84,19 +64,9 @@ image_col_middle.image("https://a0.muscache.com/im/pictures/miso/Hosting-9000318
 #image_col_middle.image("https://a0.muscache.com/im/pictures/1ff6d909-5ba6-42f3-9d2c-fa2327780936.jpg",width=250)
 
 
-
-
-
-
 st.logo("logo.jpg",
       icon_image="logo.jpg",
     size="large")
-
-#st.logo("png3.jpg"
-#      icon_image="png5.jpg",
-#       link=" "
-#    size="large")
-
 
 ## DATA TAB
 
@@ -127,29 +97,23 @@ col3.metric(":red[Number of Shared Rooms]", number_of_Shared)
 col4.metric(":red[Number of Entire home/apt]", number_of_entire) 
 
 
-## GRAFİK
-
-### 1.GRAFİK
+## GRAPH
 
 data_tab.title("New York City Airbnb Houses Map")
-#st.markdown("Bu harita, New York City'deki Airbnb girişlerinin konumlarını göstermektedir.")
 
-#Harita için filtre (isteğe bağlı)
+
 neighborhood_group = data_tab.selectbox(
     "Brooklyn",
     options=df["neighbourhood_group"].unique(),
     index=0)
 
-# Seçime göre filtreleme
-filtered_data = df[df["neighbourhood_group"] == neighborhood_group]
 
-# Harita gösterimi
+filtered_data = df[df["neighbourhood_group"] == neighborhood_group]
 data_tab.map(filtered_data[["latitude","longitude"]])
 
-## 2.GRAFİK
+## 2.GRAPH
 
 price_mean_neigborhood = price_mean_neigborhood.sort_values("price", ascending=False)
-
 
 fig1 = px.bar(price_mean_neigborhood,
              x="neighbourhood",
@@ -163,20 +127,6 @@ fig1 = px.bar(price_mean_neigborhood,
 data_tab.plotly_chart(fig1)
 
 ## 4.GRAFİK
-
-
-#fig2 = px.bar(df,
-#             x="neighbourhood_group",
-#             y="price",
-#             title="Minimum nights spent by Neighborhood",
-#             labels={"neighborhood": "Neighborhood", "price": "Average Price"},
-#             color="price",
-#             template="plotly"
-#            )
-
-#data_tab.plotly_chart(fig2)
-
-
 
 
 ############ RECOMMENDATION TAB  ##########################
@@ -194,33 +144,28 @@ def model_yukle():
 df = veri_yukle()
 model = model_yukle()
 
-# Başlık ve Açıklama
+#TITLE
 recommendation_tab.title("🏠 NYC Airbnb Room Price Prediction")
 recommendation_tab.subheader("Get estimated price by area group, room type and minimum nights information!")
 
-# Kullanıcıdan Bilgi Alma
+
 recommendation_tab.write("### Enter Your Details")
 
-#mahalle = recommendation_tab.selectbox(
-#   "Choose your neighbourhood:",
-#    options=df["neighbourhood"].unique(),
-#    help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn).")
 
-
-# Bölge Grubu Seçimi
+#######
 bolge_grubu = recommendation_tab.selectbox(
     "Choose your neighbourhood group:",
     options=["Brooklyn", "Manhattan", "Queens","Staten Island", "Bronx"],
     help="Mülkün bulunduğu genel bölgeyi seçin (örn: Manhattan, Brooklyn).")
 
-# Oda Tipi Seçimi
+######
 oda_tipi = recommendation_tab.selectbox(
     "Choose your room type:",
     options= ["Private room", "Entire home/apt", "Shared room"],
     help="Mülkün oda tipini seçin."
 )
 
-# Minimum Gece Sayısı
+######
 min_gece = recommendation_tab.number_input(
     "Enter the minimum number of nights:",
     min_value=1,
@@ -229,15 +174,7 @@ min_gece = recommendation_tab.number_input(
     step=1,
     help="Misafirlerin en az kaç gece kalması gerektiğini belirtin.")
 
-
-#aylık_puan_sayısı = recommendation_tab.number_input(
-#    "Enter your number of reviews per month:",
-#     min_value=1,
-#     max_value=365,
-#    value=1,
-#    step=1,
-#    help="Misafirlerin en az kaç gece kalması gerektiğini belirtin.")
-
+######
 puan_sayısı = recommendation_tab.number_input(
     "Enter your number of reviews:",
     min_value=1,
@@ -246,7 +183,7 @@ puan_sayısı = recommendation_tab.number_input(
     step=1,
     help="Airbnb uygulamasında odanızın puan sayısını seçin.")
 
-
+#####
 oda_sayısı = recommendation_tab.number_input(
     "Enter your room numbers:",
     min_value=1,
@@ -256,6 +193,8 @@ oda_sayısı = recommendation_tab.number_input(
     help="Kiraladığınız toplam oda sayısını seçin."
 )
 
+
+#####
 musait = recommendation_tab.number_input(
     "Enter the number of days your room is available per year:",
     min_value=1,
@@ -266,12 +205,11 @@ musait = recommendation_tab.number_input(
 )
 
 
-# Tahmin Butonu
+######
 if recommendation_tab.button("Calculate estimated price"):
-    # Kullanıcı girdilerini işleme
     input_data = {
         "neighbourhood_group": bolge_grubu,
-        "minimum_nights": min_gece * 0.05,
+        "minimum_nights": min_gece * 0.1,
         "room_type_Private room": 1 if oda_tipi == "Private room" else 0,
         "room_type_Shared room": 1 if oda_tipi == "Shared room" else 0,
         #"neighbourhood":mahalle,
@@ -281,30 +219,25 @@ if recommendation_tab.button("Calculate estimated price"):
         #"reviews_per_month":aylık_puan_sayısı
         }
 
-    # Bölge Grubu Dummy Encoding (tek bir 1, diğerleri 0 olacak şekilde)
     for group in ["Brooklyn", "Manhattan", "Queens", "Staten Island"]:
         input_data[f"neighbourhood_group_{group}"] = 1 if bolge_grubu == group else 0
 
-    # Kullanıcı girdisini DataFrame'e dönüştür
     input_df = pd.DataFrame([input_data])
 
-    # Modelin eğitimde kullandığı sütunları al
     feature_names = model.feature_names_
 
-    # Eksik sütunları tamamlayarak, yalnızca modelin beklediği sütunlarla eşleşen bir DataFrame oluştur
+
     for col in feature_names:
         if col not in input_df:
             input_df[col] = 0  # Eksik sütunlara varsayılan 0 değeri ekleniyor
 
-    # Fazla sütunları kaldır
     input_df = input_df[feature_names]
 
-    # Dummy Encoding Kontrolü
+
     #recommendation_tab.write("Dummy Encoding Sonuçları:")
     #recommendation_tab.write(input_df)
 
-    # Tahmin işlemi
     tahmini_fiyat = model.predict(input_df)[0]
 
-    # Sonuç Gösterimi
+
     recommendation_tab.success(f"Tahmini Fiyat: {tahmini_fiyat:.2f} USD")
