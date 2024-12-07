@@ -185,7 +185,7 @@ puan_sayısı = recommendation_tab.number_input(
 
 #####
 oda_sayısı = recommendation_tab.number_input(
-    "Enter your room numbers:",
+    "Enter your number of rooms:",
     min_value=1,
     max_value=365,
     value=1,
@@ -229,13 +229,10 @@ if recommendation_tab.button("Calculate estimated price"):
 
     for col in feature_names:
         if col not in input_df:
-            input_df[col] = 0  # Eksik sütunlara varsayılan 0 değeri ekleniyor
+            input_df[col] = 0 
 
     input_df = input_df[feature_names]
 
-
-    #recommendation_tab.write("Dummy Encoding Sonuçları:")
-    #recommendation_tab.write(input_df)
 
     tahmini_fiyat = model.predict(input_df)[0]
 
