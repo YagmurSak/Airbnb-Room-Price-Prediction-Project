@@ -209,7 +209,7 @@ musait = recommendation_tab.number_input(
 if recommendation_tab.button("Calculate estimated price"):
     input_data = {
         "neighbourhood_group": bolge_grubu,
-        "minimum_nights": min_gece * 0.1,
+        "minimum_nights": min_gece * 0.01,
         "room_type_Private room": 1 if oda_tipi == "Private room" else 0,
         "room_type_Shared room": 1 if oda_tipi == "Shared room" else 0,
         #"neighbourhood":mahalle,
