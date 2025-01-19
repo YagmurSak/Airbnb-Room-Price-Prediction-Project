@@ -133,25 +133,18 @@ def train_and_save_model():
     df.to_csv("yeni_dosya1.csv", index=False)
     print("yeni_dosya1.csv başarıyla oluşturuldu!")
 
-    # Verinin ayrıştırılması
+    
     y = df["price"]
-
-    # Hedef değişken ve kategorik bir kolon çıkarılıyor
     X = df.drop(["neighbourhood", "price"], axis=1)
 
-    # Eğitim ve test veri setlerine bölünmesi
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=17)
 
-    # CatBoost modelinin oluşturulması
     model = CatBoostRegressor(random_state=42, verbose=200, iterations=500, learning_rate=0.1, depth=6)
 
-    # Modelin eğitilmesi
     model.fit(X_train, y_train, cat_features=[])
 
-    # Tahminler
     y_pred = model.predict(X_test)
 
-    # Performans metrikleri
     mse = mean_squared_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
     mae = mean_absolute_error(y_test, y_pred)
@@ -160,7 +153,6 @@ def train_and_save_model():
     print(f"Mean Absolute Error (MAE): {mae}")
     print(f"R^2 Score: {r2}")
 
-    # Modelin kaydedilmesi
     joblib.dump(model, "yeni_cikti_catboost.pkl")
     print("Model başarıyla 'yeni_cikti_catboost.pkl' olarak kaydedildi.")
 
