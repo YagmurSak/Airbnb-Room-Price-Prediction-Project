@@ -16,18 +16,6 @@ In a short time, our advanced algorithms and market analysis have enabled us to 
 recommendations to hosts. Today, Panda continues to help hosts increase their earnings by providing accurate pricing
 and streamlining the pricing process. Our goal is to expand our solutions and support even more hosts in the future.""")
 
-
-#st.sidebar.write("""At Panda, we eliminate the guesswork in pricing your Airbnb property.
-#With advanced algorithms and data-driven insights, we empower hosts to unlock their rental’s full potential
-#by setting the ideal price.
-
-#Our platform analyzes market trends, local demand, and your property’s unique features to deliver precise,
-#actionable pricing recommendations tailored to you.
-
-#Whether you’re a seasoned host or just starting out, Panda makes pricing effortless and maximizes your earnings.
-#Stay ahead in the competitive short-term rental market with smarter pricing strategies. At Panda, pricing smarter
-#isn’t just easy—it’s the key to earning more!""")
-
 st.sidebar.title(":blue[Contact]")
 st.sidebar.write("panda@gmail.com")
 
@@ -118,8 +106,7 @@ fig1 = px.bar(price_mean_neigborhood,
              title="Average Price by Neighborhood",
              labels={"Neighborhood": "Neighborhood", "price": "Average Price"},
              color="price",
-             template="plotly"
-            )
+             template="plotly")
 
 data_tab.plotly_chart(fig1)
 
