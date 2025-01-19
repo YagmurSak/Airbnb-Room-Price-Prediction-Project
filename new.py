@@ -75,7 +75,6 @@ def get_data():
     df = pd.read_csv("AB_NYC_2019.csv")
     return df
 
-
 df = get_data()
 df.head()
 #data_tab.dataframe(df)
@@ -101,12 +100,10 @@ col4.metric(":red[Number of Entire home/apt]", number_of_entire)
 
 data_tab.title("New York City Airbnb Houses Map")
 
-
 neighborhood_group = data_tab.selectbox(
     "Brooklyn",
     options=df["neighbourhood_group"].unique(),
     index=0)
-
 
 filtered_data = df[df["neighbourhood_group"] == neighborhood_group]
 data_tab.map(filtered_data[["latitude","longitude"]])
@@ -126,13 +123,10 @@ fig1 = px.bar(price_mean_neigborhood,
 
 data_tab.plotly_chart(fig1)
 
-## 4.GRAFİK
-
 
 ############ RECOMMENDATION TAB  ##########################
 #################################################
 
-# Veri ve Model Yükleme
 @st.cache_data
 def veri_yukle():
     return pd.read_csv("yeni_dosya1.csv")
@@ -237,4 +231,4 @@ if recommendation_tab.button("Calculate estimated price"):
     tahmini_fiyat = model.predict(input_df)[0]
 
 
-    recommendation_tab.success(f"Tahmini Fiyat: {tahmini_fiyat:.2f} USD")
+    recommendation_tab.success(f"Calculated Price: {tahmini_fiyat:.2f} USD")
